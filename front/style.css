@@ -1,0 +1,452 @@
+* {
+    box-sizing: border-box;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    background-color: rgb(30, 30, 30);
+}
+
+/*MOBILE FIRST*/
+
+@media screen and (max-width: 768px){
+
+    h2, span {
+        font-size: 10px;
+    }
+
+    #head {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 80px;
+    }
+    
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        height: auto;
+    }
+
+    .logo > img {
+        width: 190px;
+        height: 80px;
+        object-fit: contain;
+    }
+
+    nav {
+        display: flex;
+        padding: 10px 20px;
+        background-color: gray;
+        justify-content: space-around;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        
+    }
+
+    li {
+        list-style: none;
+        color: whitesmoke;
+        font-size: 8px;
+    }
+
+    #searchBarDiv {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 50px;
+        padding: 10px;  
+        margin: 10px 0 10px;
+    }
+
+    .searchButton {
+        width: 100px;
+        height: auto;
+        border-style: none;
+        border-radius: 10px;
+        background-color: rgb(215, 127, 105);
+    }
+
+    .searchbar {
+        width: 55%;
+        height: auto;
+        border-style: none;
+        border-radius: 10px;
+        padding-left: 10px;
+        margin-right: 10px;
+    }
+
+    #allFunkosSection {
+        padding:12px;
+    }
+
+    .funkosDiv {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        gap: 20px;
+        
+    }
+
+    .funko-card, .spinner {
+        display: flex;
+        flex-direction: column;
+        border-radius: 5px;
+        width: 140px;
+        height: 200px;
+        background-color: white;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .funkoImg {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .details {
+        display: flex;
+        gap: 6em;
+    }
+
+    #pages {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100px;
+        padding: 20px;
+        background-color: rgb(61, 60, 60);
+    }
+    .spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border-left-color:rgb(109, 171, 205);
+        animation: spin 1s ease infinite;
+      }
+      
+    @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+      
+        100% {
+          transform: rotate(360deg);
+        }
+    }
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    
+    h2, span {
+        font-size: 10px;
+    }
+
+    #head {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 90px;
+    }
+     
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90px;
+    }
+
+
+    .logo > img {
+        width: 200px;
+        height: 90px;
+        object-fit: contain;
+    }
+
+    nav {
+        display: flex;
+        padding: 10px 20px;
+        background-color: gray;
+        justify-content: space-around;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        
+    }
+
+    li {
+        list-style: none;
+        color: whitesmoke;
+        font-size: 8px;
+    }
+
+    #searchBarDiv {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 50px;
+        padding: 10px;  
+        margin: 10px 0 10px;
+    }
+
+    .searchButton {
+        width: 100px;
+        height: auto;
+        border-style: none;
+        border-radius: 10px;
+        background-color: rgb(215, 127, 105);
+    }
+
+    .searchbar {
+        width: 55%;
+        height: auto;
+        border-style: none;
+        border-radius: 10px;
+        padding-left: 10px;
+        margin-right: 10px;
+    }
+
+    #allFunkosSection {
+        padding:12px;
+    }
+
+    .funkosDiv {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        gap: 20px;
+        
+    }
+
+    .funko-card, .spinner {
+        display: flex;
+        flex-direction: column;
+        border-radius: 5px;
+        width: 140px;
+        height: 200px;
+        background-color: white;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .funkoImg {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .details {
+        display: flex;
+        gap: 6em;
+    }
+
+    #pages {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100px;
+        padding: 20px;
+        background-color: rgb(61, 60, 60);
+    }
+    .spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border-left-color:rgb(109, 171, 205);
+        animation: spin 1s ease infinite;
+      }
+      
+    @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+      
+        100% {
+          transform: rotate(360deg);
+        }
+    }
+
+}
+
+
+@media screen and (min-width: 1025px){
+
+    h2, span {
+        font-size: 16px;
+    }
+
+    #head {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 120px;
+    }
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        height: auto;
+    }
+
+    .logo > img {
+        width: 280px;
+        height: 180px;
+        object-fit: contain;
+    }
+
+    nav {
+        display: flex;
+        padding: 20px 60px;
+        background-color: gray;
+        justify-content: space-around;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 50px;
+        
+    }
+
+    li {
+        list-style: none;
+        color: whitesmoke;
+        font-size: 14px;
+    }
+
+    li:hover {
+        cursor: pointer;
+        color: rgb(109, 171, 205);
+    }
+
+    #searchBarDiv {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 80px;
+        padding: 20px;
+        margin: 10px 0 10px;
+    }
+
+    .searchButton {
+        width: 100px;
+        height: 40px;
+        border-radius: 10px;
+        border-color: none;
+        border-style: none;
+        background-color: rgb(215, 127, 105);
+    }
+
+    .searchbar {
+        width:50%;
+        height: 40px;
+        border-radius: 10px;
+        padding-left: 10px;
+        margin-right: 10px;
+        border-style: none;
+    }
+
+
+    #allFunkosSection {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+    }
+
+    .categoryName {
+        position: absolute;
+        left: 2em;
+        color: whitesmoke;
+    }
+
+    .funkosDiv {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        gap: 20px;
+        padding-bottom: 70px;
+    }
+
+    .funko-card, .spinner {
+        display: flex;
+        flex-direction: column;
+        border-radius: 5px;
+        width: 250px;
+        height: 320px;
+        background-color: white;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .funkoImg {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .details {
+        display: flex;
+        gap: 6em;
+    }
+
+    #pages {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 150px;
+        padding: 20px;
+        background-color: rgb(61, 60, 60);
+    }
+
+    .spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        border-left-color:rgb(109, 171, 205);
+        animation: spin 1s ease infinite;
+      }
+      
+    @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+      
+        100% {
+          transform: rotate(360deg);
+        }
+    }
+}
