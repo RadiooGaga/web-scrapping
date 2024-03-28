@@ -8,6 +8,8 @@ Los datos se guardan en la base de datos de MongoDB, pero se sobreescriben en ca
 
 No he podido generar aleatoriedad en la aparición de los productos, intuyo que es por cómo están dispuestos en la web original.
 
+Con fs.write() así ../${topic}.json, me guarda el archivo, pero no en vscode, sino fuera de la carpeta donde tengo almacenado el proyecto. Si lo hago así: ${topic}.json, se me guarda en vscode, pero a donde voy es que, de esta última manera, a veces me pintaba los productos y otras no. Me volví totalmente loca porque me ha dado la sensación de que el proyecto respondía de forma aleatoria a cada rato.
+
 En insomnia:
 
 ## traerse todos los funkos

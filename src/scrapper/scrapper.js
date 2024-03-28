@@ -42,7 +42,6 @@ const scrapper = async (url, topic) => {
         img: img[index],
         price: price[index]
     })); 
-    //console.log(funkoProducts, "20 funkos por página");
 
     //que metemos en DB
     insertDocuments(funkoProducts);
@@ -50,7 +49,7 @@ const scrapper = async (url, topic) => {
 
      //Con FS escribimos un nuevo fichero {}.json con los productos
      try {
-        fs.writeFile(`${topic}.json`, JSON.stringify(funkoProducts), (err) => {
+        fs.writeFile(`../${topic}.json`, JSON.stringify(funkoProducts), (err) => {
             if (err) {
                 console.log(err)
             } else {
