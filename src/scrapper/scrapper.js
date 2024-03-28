@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer');
 const { connectDB, insertDocuments } = require('../config/db');
-const { extractData } = require('../config/extractData');
-const Funko = require('../models/Funko');
+const { extractData } = require('../config/functions');
 const fs = require('fs');
 
 const scrapper = async (url, topic) => {
@@ -16,15 +15,15 @@ const scrapper = async (url, topic) => {
     const page = await browser.newPage();
     await page.goto(url);
     const timeout = 2000;
-
+  
     try {
         const pagination = await page.waitForSelector('.btn-pagination', { timeout });
         console.log("hay paginación", pagination) 
     } catch (error) {
         console.log("Aquí no hay elementos de paginación, mi ciela", error)
     }
-    
-    
+
+
     //los datos que quiero
     const title = await extractData(page, 'a.product-name', nodes =>
         nodes.map(node => node.innerText)
@@ -38,32 +37,35 @@ const scrapper = async (url, topic) => {
    
 
     //generamos un json del producto con lo que sacamos de él
-    const funkoProduct = title.map((value, index) => ({//title.slice(0, 1).map para probar 1
+    const funkoProducts = title.map((value, index) => ({//title.slice(0, 1).map para probar 1
         title: title[index],
         img: img[index],
         price: price[index]
     })); 
-  
-    //generamos la aleatoriedad de la aparición de los datos
-    //console.log(generateRandomRange(funkoProduct))
-   
+    //console.log(funkoProducts, "20 funkos por página");
+
     //que metemos en DB
-    insertDocuments(funkoProduct);
+    insertDocuments(funkoProducts);
   
+
      //Con FS escribimos un nuevo fichero {}.json con los productos
-    fs.writeFile(`${topic}.json`, JSON.stringify(funkoProduct), (err) => {
-        if (err) {
-            console.log(err)
-        } else {
-            console.log("archivo guardado")
-        }
-    });
+     try {
+        fs.writeFile(`${topic}.json`, JSON.stringify(funkoProducts), (err) => {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log("archivo guardado")
+            }
+        });
+     } catch (error) {
+        console.log("no se ha guardado donde se tiene que guardar", error)
+     }
     
-   
+    
     //cerramos navegador, aviso de guardado y retornamos el funko
     await browser.close();
-    console.log('Todos guardados !!');
-    return funkoProduct;
+    console.log(`${topic} Todos guardados !!`);
+    return funkoProducts;
 }
 
 module.exports = { scrapper };

@@ -1,5 +1,9 @@
 const searchButton = document.querySelector('.searchButton');
 
+const btnShowMore = document.createElement('button');
+btnShowMore.className = 'btn-pagination';
+btnShowMore.textContent = 'SHOW MORE';
+
 const getProducts = async () => {
     
     const input = document.querySelector('.searchbar');
@@ -36,7 +40,7 @@ const setupCategoryListeners = () => {
         });
     });
 };
-
+setupCategoryListeners();
 
 const getFunkoByCategory = async (categoryName) => {
 
@@ -47,9 +51,15 @@ const getFunkoByCategory = async (categoryName) => {
 };
 
 
+
 const printProducts = (products) => {
     const funkosDiv = document.querySelector('.funkosDiv');
     funkosDiv.innerHTML ="";
+    const pagination = document.querySelector('.pagination');
+    pagination.innerHTML = '';
+   
+ 
+    let productsHTML = [];
 
         for (const product of products) {
             const { title, img, price } = product;
@@ -60,13 +70,16 @@ const printProducts = (products) => {
                     <span>Precio: ${price}</span>
                 </div>
             `;
-            funkosDiv.innerHTML += productHTML; 
+            productsHTML += productHTML; 
         }
+        funkosDiv.innerHTML = productsHTML;  
+        pagination.appendChild(btnShowMore) 
+
 }
 
-          
 searchButton.addEventListener("click", getProducts);
-setupCategoryListeners();
+
+
 
 
 

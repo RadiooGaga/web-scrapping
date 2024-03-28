@@ -74,6 +74,7 @@ html, body {
         height: auto;
         border-style: none;
         border-radius: 10px;
+        color: white;
         background-color: rgb(215, 127, 105);
     }
 
@@ -109,18 +110,13 @@ html, body {
         background-color: white;
         text-align: center;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         padding: 10px;
     }
 
     .funkoImg {
         width: 100%;
         object-fit: cover;
-    }
-
-    .details {
-        display: flex;
-        gap: 6em;
     }
 
     #pages {
@@ -131,6 +127,16 @@ html, body {
         padding: 20px;
         background-color: rgb(61, 60, 60);
     }
+
+    .btn-pagination {
+        font-size: 12px;
+        padding: 14px; 
+        border-style: none;
+        border-radius: 10px;
+        background-color: rgb(215, 127, 105);
+        color: white;
+     }
+
     .spinner {
         border: 4px solid rgba(0, 0, 0, 0.1);
         width: 36px;
@@ -151,6 +157,7 @@ html, body {
     }
 
 }
+
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     
@@ -214,6 +221,7 @@ html, body {
         height: auto;
         border-style: none;
         border-radius: 10px;
+        color: white;
         background-color: rgb(215, 127, 105);
     }
 
@@ -249,18 +257,13 @@ html, body {
         background-color: white;
         text-align: center;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         padding: 10px;
     }
 
     .funkoImg {
         width: 100%;
         object-fit: cover;
-    }
-
-    .details {
-        display: flex;
-        gap: 6em;
     }
 
     #pages {
@@ -271,6 +274,16 @@ html, body {
         padding: 20px;
         background-color: rgb(61, 60, 60);
     }
+
+    .btn-pagination {
+        font-size: 14px;
+        padding: 17px; 
+        border-style: none;
+        border-radius: 10px;
+        background-color: rgb(215, 127, 105);
+        color: white;
+     }
+
     .spinner {
         border: 4px solid rgba(0, 0, 0, 0.1);
         width: 40px;
@@ -361,6 +374,7 @@ html, body {
         border-radius: 10px;
         border-color: none;
         border-style: none;
+        color: white;
         background-color: rgb(215, 127, 105);
     }
 
@@ -408,18 +422,13 @@ html, body {
         background-color: white;
         text-align: center;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         padding: 10px;
     }
 
     .funkoImg {
         width: 100%;
         object-fit: cover;
-    }
-
-    .details {
-        display: flex;
-        gap: 6em;
     }
 
     #pages {
@@ -429,6 +438,16 @@ html, body {
         height: 150px;
         padding: 20px;
         background-color: rgb(61, 60, 60);
+    }
+
+
+    .btn-pagination {
+       font-size: 16px;
+       padding: 20px; 
+       border-style: none;
+       border-radius: 10px;
+       background-color: rgb(215, 127, 105);
+       color: white;
     }
 
     .spinner {
@@ -449,4 +468,6 @@ html, body {
           transform: rotate(360deg);
         }
     }
+
+    
 }
