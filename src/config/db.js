@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Funko = require('../models/Funko');
-process.loadEnvFile()
+
 
 //conectar a DB
 const connectDB =  async () => {

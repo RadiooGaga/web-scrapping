@@ -1,3 +1,4 @@
+require("dotenv").config();
 const {searchWordFunction, searchByCategory} = require('./src/routes/routes');
 const express = require('express');
 const cors = require("cors");
