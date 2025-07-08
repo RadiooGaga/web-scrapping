@@ -1,18 +1,31 @@
+document.addEventListener('DOMContentLoaded', () => {
 const searchButton = document.querySelector('.searchButton');
 
-const btnShowMore = document.createElement('button');
-btnShowMore.className = 'btn-pagination';
-btnShowMore.textContent = 'SHOW MORE';
 
-const getProducts = async () => {
-    
+let currentProducts = [];
+let currentPage = 1;
+let currentSearchTerm = null;
+let currentCategory = null;
+let totalPages;
+
+
+const getProducts = async (page = 1) => {
     const input = document.querySelector('.searchbar');
-    searchButton.style.backgroundColor = "green";
-    LOADING()
+    const searchTerm = input.value.trim();
+    if (!searchTerm) return;
 
-    const res = await fetch(`http://localhost:4001/api/v1/funko/${input.value}`);
-    const products = await res.json();
-    printProducts(products);
+    currentSearchTerm = searchTerm;
+    currentCategory = null;
+
+    searchButton.style.backgroundColor = "green";
+    LOADING();
+
+    const res = await fetch(`http://localhost:4001/api/v1/funko/${currentSearchTerm}?page=${page}`);
+    const data = await res.json();
+    //console.log(typeof data) // object
+
+    currentProducts = data;
+    printProducts();
 }
 
 
@@ -30,56 +43,110 @@ const LOADING = () => {
     }
 }
 
+/*
+btnShowMore.addEventListener('click', () => {
+    currentPage++;
+    if (currentCategory) {
+        getFunkoByCategory(currentCategory, currentPage);
+    } else if (currentSearchTerm) {
+        getProducts(currentPage);  // <-- ahora le pasas la página
+    }
+});*/
+
+
+
+const renderPagination = (totalPages) => {
+    const pagination = document.querySelector('.pagination');
+    pagination.innerHTML = ''; // limpiar anteriores
+
+   for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = i;
+        btn.classList.add('btn-pagination');
+        if (i === currentPage) btn.classList.add('active');
+
+        btn.addEventListener('click', () => {
+            currentPage = i;
+            if (currentCategory) {
+                getFunkoByCategory(currentCategory, currentPage);
+            } else if (currentSearchTerm) {
+                getProducts(currentPage);
+            }
+        });
+
+        pagination.appendChild(btn);
+    }
+};
+
 
 const setupCategoryListeners = () => {
     const categories = document.getElementById('listOfCategories').querySelectorAll('li');
     categories.forEach(category => {
-        category.addEventListener("click", async () => {
+        category.addEventListener("click", () => {
             const categoryName = category.textContent.trim();
-            await getFunkoByCategory(categoryName);
+            getFunkoByCategory(categoryName, 1);
         });
     });
 };
 setupCategoryListeners();
 
-const getFunkoByCategory = async (categoryName) => {
+
+
+const getFunkoByCategory = async (categoryName, page = 1) => {
+
+    currentCategory = categoryName;
+    currentSearchTerm = null;
+
 
     LOADING();
-    const res = await fetch(`http://localhost:4001/api/v1/cat/${categoryName}/`);
-    const products = await res.json();
-    printProducts(products);
+    const res = await fetch(`http://localhost:4001/api/v1/cat/${categoryName}?page=${page}`);
+    const data = await res.json();
+
+    currentProducts = data;
+    totalPages = data.totalPages;
+
+    //console.log(typeof currentProducts) // object
+
+    printProducts();
 };
 
 
 
-const printProducts = (products) => {
+const printProducts = () => {
     const funkosDiv = document.querySelector('.funkosDiv');
     funkosDiv.innerHTML ="";
+
+    if (!currentProducts || currentProducts.length === 0) {
+        funkosDiv.innerHTML = "<p>No se han encontrado productos.</p>";
+        return;
+    }
     const pagination = document.querySelector('.pagination');
     pagination.innerHTML = '';
    
  
-    let productsHTML = [];
+    let productsHTML = '';
 
-        for (const product of products) {
+        for (const product of currentProducts) {
             const { title, img, price } = product;
-            const productHTML = `
+            productsHTML += `
                 <div class="funko-card">
                     <h2>${title}</h2>
                     <img src="${img}">
                     <span>Precio: ${price}</span>
                 </div>
             `;
-            productsHTML += productHTML; 
+            
         }
-        funkosDiv.innerHTML = productsHTML;  
-        pagination.appendChild(btnShowMore) 
+
+    funkosDiv.innerHTML = productsHTML;  
+        
+    renderPagination(totalPages)
 
 }
 
 searchButton.addEventListener("click", getProducts);
 
 
-
+})
 
 

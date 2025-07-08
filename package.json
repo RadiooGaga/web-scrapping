@@ -12,11 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.19.1",
-    "mongoose": "^8.2.2",
-    "puppeteer": "^22.5.0"
+    "express": "^4.21.2",
+    "mongoose": "^8.16.2",
+    "puppeteer": "^22.15.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.10"
   }
 }
