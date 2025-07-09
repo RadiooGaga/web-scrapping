@@ -24,7 +24,8 @@ const searchWordFunction = async (req, res, next) => {
 
 const searchByCategory = async (req, res, next) => {
     try {
-        let key = decodeURIComponent(req.params.key) || '';
+        let key = decodeURIComponent(req.params.key);
+        if (key === 'all') key = '';
         const page = parseInt(req.query.page) || 1;
         const pageSize = 20;
         const start = (page - 1) * pageSize;

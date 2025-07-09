@@ -11,13 +11,13 @@ let totalPages;
 
 const getProducts = async (page) => {
     const input = document.querySelector('.searchbar');
-    const searchTerm = input.value.trim();
-    if (!searchTerm) return;
+    currentSearchTerm = input.value.trim();
+    currentCategory = null;
 
     searchButton.style.backgroundColor = "green";
     LOADING();
 
-    const res = await fetch(`http://localhost:4001/api/v1/funko/${searchTerm}?page=${page}`);
+    const res = await fetch(`http://localhost:4001/api/v1/funko/${currentSearchTerm}?page=${page}`);
     const data = await res.json();
     //console.log("RES JSON:", data);
 
@@ -56,6 +56,8 @@ const renderPagination = (totalPages) => {
 
         btn.addEventListener('click', () => {
             currentPage = i;
+            console.log(currentPage)
+
             if (currentCategory) {
                 getFunkoByCategory(currentCategory, currentPage);
             } else if (currentSearchTerm) {
@@ -84,11 +86,10 @@ setupCategoryListeners();
 const getFunkoByCategory = async (categoryName, page) => {
 
     currentCategory = categoryName;
-    currentSearchTerm = null;
-
 
     LOADING();
-    const res = await fetch(`http://localhost:4001/api/v1/cat/${categoryName}?page=${page}`);
+    const key = categoryName || 'all';
+    const res = await fetch(`http://localhost:4001/api/v1/cat/${key}?page=${page}`);
     const data = await res.json();
     //console.log("RES JSON:", data);
 
@@ -127,7 +128,6 @@ const printProducts = (products, pages) => {
         }
 
     funkosDiv.innerHTML = productsHTML;  
-        
     renderPagination(pages)
 
 }
