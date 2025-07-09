@@ -62,8 +62,13 @@ Para guardar los JSON en la carpeta correcta:
    ** URL: ** `http://localhost:4001/api/v1/cat/music`
 
 
-🌀 Spinners de carga
-![spinner](/front/pics/spinner.png)
 
 🖼️ Previsualizacion de la página
 ![preview](/front/pics/cap1.png)
+
+🌀 Spinners de carga
+![spinner](/front/pics/spinner.png)
+
+📄 Paginación
+![paginacion](/front/pics/paginacion.png)
+
