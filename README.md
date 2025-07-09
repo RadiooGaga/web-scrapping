@@ -9,10 +9,10 @@ Proyecto creado para hacer web scraping en la página oficial de Funko, extrayen
 
 ### 🚀 FUNCIONALIDADES
 
-🔎 Buscar por categorías (Videogames, Retro Toys, Music... etc.)
-🔍 Usar un buscador libre (por personaje o palabra clave)
-💾 Guardar los resultados en MongoDB (sobrescribiendo cada nueva búsqueda)
-🗃️ Generar un archivo JSON por cada búsqueda
+- 🔎 Buscar por categorías (Videogames, Retro Toys, Music... etc.)
+- 🔍 Usar un buscador libre (por personaje o palabra clave)
+- 💾 Guardar los resultados en MongoDB (sobrescribiendo cada nueva búsqueda)
+- 🗃️ Generar un archivo JSON por cada búsqueda
 
 
 ### ⚙️ TECNOLOGÍAS USADAS
@@ -28,7 +28,8 @@ Proyecto creado para hacer web scraping en la página oficial de Funko, extrayen
 
 ### 📁 ESTRUCTURA DE DATOS
 
-Cada producto scrapeado tiene el siguiente formato json:
+Cada producto scrapeado tiene el siguiente formato:
+```json
 
 {
   "title": "Pop! Avril Lavigne (Sk8ter Boi)",
@@ -46,8 +47,8 @@ Cada producto scrapeado tiene el siguiente formato json:
 🔄 Los datos se sobreescriben en cada nueva búsqueda tanto en MongoDB como en el archivo JSON correspondiente. 
 
 Para guardar los JSON en la carpeta correcta:
-	• fs.writeFile('../${topic}.json') -> lo guarda fuera del proyecto.
-	• fs.writeFile('${topic}.json') -> guarda en la raíz del proyecto (recomendado si trabajas desde VSCode)
+- fs.writeFile('../${topic}.json') -> lo guarda fuera del proyecto.
+- fs.writeFile('${topic}.json') -> guarda en la raíz del proyecto (recomendado si trabajas desde VSCode)
 
 --
 
@@ -62,3 +63,6 @@ Para guardar los JSON en la carpeta correcta:
 
 🌀 Spinners de carga
 ![spinner](/front/pics/spinner.png)
+
+🖼️ Previsualizacion de la página
+![preview](/front/pics/cap1.png)
