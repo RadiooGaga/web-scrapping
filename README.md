@@ -36,6 +36,7 @@ Cada producto scrapeado tiene el siguiente formato:
   "price": "14.99€",
   "img": "https://funko.com/dw/image/v2/BGTS_PRD/on/demandware.static/-/Sites-funko-master-catalog/default/dw47e3b3e3/images/funko/upload/75384_AvrilLavigne_Sk8erBoi_POP_GLAM-WEB.png?sw=346&sh=346"
 }
+```
 
 
 ---
