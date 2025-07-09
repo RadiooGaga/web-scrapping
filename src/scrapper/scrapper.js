@@ -23,6 +23,24 @@ const scrapper = async (url, topic) => {
         console.log("Aquí no hay elementos de paginación, mi ciela", error)
     }
 
+    
+    // Intenta obtener el número total de resultados de la página original
+    const totalText = await extractData(page, 'div.item-count span', nodes =>
+    nodes.map(node => node.innerText)
+    );
+
+    let totalResults = 0;
+
+    for (const text of totalText) {
+    const match = text.match(/of\s+([\d,]+)/i);
+        if (match) {
+            totalResults = parseInt(match[1].replace(/,/g, ''));
+            break;
+        }
+    }
+    console.log("totalText:", totalText);
+    console.log("totalResults calculado:", totalResults);
+
 
     //los datos que quiero
     const title = await extractData(page, 'a.product-name', nodes =>
@@ -64,7 +82,10 @@ const scrapper = async (url, topic) => {
     //cerramos navegador, aviso de guardado y retornamos el funko
     await browser.close();
     console.log(`${topic} Todos guardados !!`);
-    return funkoProducts;
+    return {
+        funkoProducts,
+        totalResults
+    }
 }
 
 module.exports = { scrapper };
