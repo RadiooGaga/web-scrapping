@@ -7,7 +7,7 @@ const scrapper = async (url, topic) => {
     await connectDB()
    
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: false, // 'new' en produccion
         defaultViewport: null,
         args: ['--start-maximized']
     })
@@ -54,14 +54,16 @@ const scrapper = async (url, topic) => {
     );
    
 
-    //generamos un json del producto con lo que sacamos de él
-    const funkoProducts = title.map((value, index) => ({//title.slice(0, 1).map para probar 1
+    //generamos un json del producto con lo que sacamos de él: title.slice(0, 1).map para probar 1
+    const funkoProducts = title.map((value, index) => ({
         title: title[index],
         img: img[index],
         price: price[index]
-    })); 
+    }));
+    
+    console.log(funkoProducts)
 
-    //que metemos en DB
+    //lo guardamos en DB
     insertDocuments(funkoProducts);
   
 
@@ -81,7 +83,7 @@ const scrapper = async (url, topic) => {
     
     //cerramos navegador, aviso de guardado y retornamos el funko
     await browser.close();
-    console.log(`${topic} Todos guardados !!`);
+    console.log(`búsqueda realizada: ${topic} Todos guardados !!`);
     return {
         funkoProducts,
         totalResults

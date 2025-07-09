@@ -24,7 +24,7 @@ const getProducts = async (page) => {
     products = data.products;
     totalPages = data.totalPages;
 
-    printProducts(data.products, data.totalPages);
+    printProducts(products, totalPages);
 }
 
 
@@ -46,9 +46,26 @@ const LOADING = () => {
 const renderPagination = (totalPages) => {
     const pagination = document.querySelector('.pagination');
     pagination.innerHTML = ''; // limpiar anteriores
-    //console.log(totalPages)
+    //console.log(totalPage  
+    
+    const maxButtons = 5;
+    let startPage = Math.max(currentPage - Math.floor(maxButtons / 2), 1);
+    let endPage = startPage + maxButtons - 1;
 
-   for (let i = 1; i <= totalPages; i++) {
+    if (endPage > totalPages) {
+        endPage = totalPages;
+        startPage = Math.max(endPage - maxButtons + 1, 1);
+    }
+
+       // Indicador "Anterior"
+    if (currentPage > 1) {
+        const prevBtn = document.createElement('button');
+        nextBtn.textContent = '<<';
+        prevBtn.classList.add('previous');
+        pagination.appendChild(prevBtn);
+    }
+
+   for (let i = startPage; i <= endPage; i++) {
         const btn = document.createElement('button');
         btn.textContent = i;
         btn.classList.add('btn-pagination');
@@ -57,17 +74,28 @@ const renderPagination = (totalPages) => {
         btn.addEventListener('click', () => {
             currentPage = i;
             console.log(currentPage)
-
-            if (currentCategory) {
-                getFunkoByCategory(currentCategory, currentPage);
-            } else if (currentSearchTerm) {
-                getProducts(currentPage);
-            }
+            handlePaginationClick();
         });
 
         pagination.appendChild(btn);
     }
+
+        // Indicador "Siguiente"
+    if (currentPage < totalPages) {
+        const nextBtn = document.createElement('button');
+        nextBtn.textContent = '>>';
+        nextBtn.classList.add('next');
+        pagination.appendChild(nextBtn);
+    }
 };
+
+const handlePaginationClick = () => {
+    if (currentCategory) {
+        getFunkoByCategory(currentCategory, currentPage);
+    } else if (currentSearchTerm) {
+        getProducts(currentPage);
+    }
+}
 
 
 const setupCategoryListeners = () => {
@@ -96,7 +124,7 @@ const getFunkoByCategory = async (categoryName, page) => {
     products = data.products;
     totalPages = data.totalPages;
 
-    printProducts(data.products, data.totalPages);
+    printProducts(products, totalPages);
 };
 
 
@@ -136,7 +164,6 @@ const printProducts = (products, pages) => {
         currentPage = 1;
         getProducts(currentPage);
     });
-
 
 })
 

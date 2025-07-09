@@ -5,7 +5,7 @@ const searchWordFunction = async (req, res, next) => {
     try {
         const { key } = req.params;
         const page = parseInt(req.query.page) || 1;
-        const pageSize = 20;
+        const pageSize = 20; // funkos por página
         const start = (page - 1) * pageSize;
 
         const url = `https://funko.com/search/?q=${key}&start=${start}&sz=${pageSize}`;
@@ -35,7 +35,7 @@ const searchByCategory = async (req, res, next) => {
             : `https://funko.com/fandoms/${key}?start=${start}&sz=${pageSize}`;
         const { funkoProducts, totalResults } = await scrapper(url, key);
         const totalPages = Math.ceil(totalResults / pageSize);
-        console.log(funkoProducts);
+        //console.log(funkoProducts);
 
         return res.status(200).json({
             products: funkoProducts,

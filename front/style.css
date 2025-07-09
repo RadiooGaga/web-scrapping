@@ -12,16 +12,26 @@ html, body {
 
 .pagination {
     display: flex;
+    width: 100%;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 10px;
-    width: 100%;
-    height: auto;
-    text-align: center;
-    padding: 20px 0;
-    background-color: #3d3c3c; /* mismo gris que usas en otros sitios */
-  
+    background-color: #3d3c3c; 
 }
+
+.btn-pagination.active {
+    background-color: #fbbf24; 
+    font-weight: bold;
+}
+
+.next, .previous {
+    background-color: transparent;
+    color: #fbbf24;
+    border: none;
+    font-size: 20px;
+}
+
 
 /*MOBILE FIRST*/
 
@@ -137,7 +147,7 @@ html, body {
         display: flex;
         justify-content: center;
         width: 100%;
-        height: 100px;
+        height: auto;
         padding: 20px;
         background-color: rgb(61, 60, 60);
     }
@@ -286,7 +296,7 @@ html, body {
         display: flex;
         justify-content: center;
         width: 100%;
-        height: 100px;
+        height: auto;
         padding: 20px;
         background-color: rgb(61, 60, 60);
     }
@@ -299,7 +309,7 @@ html, body {
         background-color: rgb(215, 127, 105);
         color: white;
         cursor: pointer;
-     }
+    }
 
     .spinner {
         border: 4px solid rgba(0, 0, 0, 0.1);
@@ -453,7 +463,7 @@ html, body {
         display: flex;
         justify-content: center;
         width: 100%;
-        height: 150px;
+        height: auto;
         padding: 20px;
         background-color: rgb(61, 60, 60);
     }
